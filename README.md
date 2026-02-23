@@ -32,6 +32,16 @@ El dashboard estará disponible en `http://localhost:8501`
 - **Variables climáticas**: Temperatura, precipitación, NDVI y punto de rocío
 - **Panel de riesgo**: Detalle de probabilidad para municipio seleccionado
 
+## Documentación del Reporte (Extracto)
+
+**Fuentes del tablero desarrollada:**
+> Repositorio principal: https://github.com/jhoneduardmoreno/dashboard_dengue  
+> Tecnologías: Streamlit 1.30.0, scikit-learn 1.3.0 + joblib, Plotly  
+> Integración modelo: model_loader.py carga logistic_dengue.pkl desde MLflow  
+> Ejecución: `pip install -r requirements.txt && streamlit run app.py`
+
+**Estado actual:** Prototipo funcional para Entrega 2 Microproyecto PDS.
+
 ## Proyecto
 
 MAIA — Universidad de los Andes  
