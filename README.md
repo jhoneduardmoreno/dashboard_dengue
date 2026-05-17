@@ -1,36 +1,70 @@
-# 🦟 Sistema de Alerta Temprana de Dengue — Colombia
+# 🦟 Sistema de Alerta Temprana de Dengue — 3 Municipios Foco
 
-Dashboard interactivo para la visualización y predicción de exceso epidémico de dengue a nivel municipal.
+Dashboard interactivo (Streamlit) y API REST (FastAPI) para predecir exceso epidémico de dengue en tres municipios foco del microproyecto MAIA — Universidad de los Andes.
 
-## Requisitos
+## Alcance (Entrega 3)
 
-- Python 3.9+
-- Archivos necesarios en la misma carpeta:
-  - `app.py` — Código del dashboard
-  - `panel_municipal_mensual.csv` — Dataset del proyecto
-  - `logistic_regression.joblib` — Modelo entrenado
+Modelos independientes por municipio (D1, D5):
+
+| Código | Municipio | Departamento | Región |
+|--------|-----------|--------------|--------|
+| 23855  | Valencia  | Córdoba      | Caribe |
+| 47288  | Fundación | Magdalena    | Sierra Nevada |
+| 95025  | El Retorno| Guaviare     | Amazonía |
+
+Cada municipio tiene un par de modelos (`logistic`, `xgboost`) entrenados sobre 2007–2019 y evaluados en 2020–2024. El baseline trivial (D17) se incluye como referencia en el dashboard.
+
+Toda la metodología (D1–D17), incluyendo definición de exceso, features, tuning y evaluación, está en [`docs/decisiones_proyecto.md`](docs/decisiones_proyecto.md).
+
+## Artefactos
+
+- `foco_models.joblib` — Bundle `{cod_mpio: {municipio, logistic:{model,scaler,features}, xgboost:{model,scaler,features,best_params}}}`.
+- `panel_municipal_mensual.csv` — Panel mensual 2007-2024 × 3 municipios (648 filas).
+- `predicciones_test.csv` — Predicciones cacheadas baseline/logística/XGBoost para 2020-2024.
+- `foco_meta.py` — Metadata compartida (coords, deptos, thresholds 0.3/0.6).
 
 ## Instalación
 
+Requiere el entorno conda `dashboard_dengue`:
+
 ```bash
+conda activate dashboard_dengue
 pip install -r requirements.txt
 ```
 
 ## Ejecución
 
+**Dashboard:**
+
 ```bash
 streamlit run app.py
 ```
 
-El dashboard estará disponible en `http://localhost:8501`
+Disponible en `http://localhost:8501`.
 
-## Funcionalidades
+**API REST:**
 
-- **Filtros interactivos**: Por año, mes, departamento y municipio
-- **Tabla de alertas**: Top 15 municipios con mayor probabilidad de exceso
-- **Serie temporal**: Evolución de casos regulares y graves con probabilidad de exceso
-- **Variables climáticas**: Temperatura, precipitación, NDVI y punto de rocío
-- **Panel de riesgo**: Detalle de probabilidad para municipio seleccionado
+```bash
+uvicorn api:app --reload
+```
+
+Endpoints en `http://localhost:8000`:
+
+- `GET /health` — Estado del bundle y thresholds.
+- `GET /municipios` — Lista los 3 focos con metadata.
+- `GET /features?cod_mpio=23855&model_type=xgboost` — Features esperadas por el modelo.
+- `POST /predict` — Body `{cod_mpio, model_type, features:{...}}`.
+
+Documentación interactiva en `http://localhost:8000/docs`.
+
+## Funcionalidades del dashboard
+
+- Selector de municipio foco y de modelo (XGBoost por defecto, Logística, Baseline).
+- Mapa con los 3 municipios coloreados según nivel de alerta del periodo.
+- Serie temporal 2007-2024 con marcadores de exceso real y predicho (test 2020-2024).
+- Curva de probabilidad del modelo activo en el test.
+- Panel de riesgo: probabilidad, nivel, métricas (Precision/Recall/F1/Accuracy) y variables del periodo.
+- Descarga CSV de la serie del municipio activo.
 
 ## Documentación del Reporte (Extracto)
 
@@ -46,5 +80,4 @@ Se despliega bajo un ambiente EC2 en AWS el cual se expone con una IP pública.
 ## Proyecto
 
 MAIA — Universidad de los Andes  
-Proyecto Desarrollo de Soluciones — Microproyecto  
-2026
+Proyecto Desarrollo de Soluciones — Microproyecto Entrega 3 — 2026
