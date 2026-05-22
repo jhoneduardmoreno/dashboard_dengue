@@ -1,6 +1,6 @@
 """
 Sistema de Alerta Temprana de Dengue - 3 municipios foco
-Dashboard interactivo — Entrega 3 (per-municipio)
+Dashboard interactivo
 MAIA — Universidad de los Andes
 
 Metodología y decisiones: docs/decisiones_proyecto.md (D1-D17).
@@ -249,7 +249,6 @@ with st.sidebar:
         """
         <div style='text-align:center; color:#94a3b8; font-size:0.75rem;'>
             MAIA — Universidad de los Andes<br>
-            Microproyecto PDS — Entrega 3<br>
             2026
         </div>
         """,
@@ -630,7 +629,7 @@ Metodología completa: `docs/decisiones_proyecto.md` (D1–D17).
 st.markdown(
     """
 <div style="text-align:center; color:#94a3b8; font-size:0.75rem; margin-top:2rem; padding:1rem;">
-    Sistema de Alerta Temprana de Dengue — Microproyecto PDS Entrega 3<br>
+    Sistema de Alerta Temprana de Dengue<br>
     MAIA — Universidad de los Andes — 2026<br>
     Danilo Camargo · Jhon Eduard Moreno Díaz · Hernán Javier Silva Sosa · Sheyla Ruby Zela Quirita
 </div>
