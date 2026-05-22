@@ -34,7 +34,7 @@ uvicorn api:app --reload    # API at http://localhost:8000 (docs at /docs)
 
 Three core artifacts plus shared metadata:
 
-- **`foco_models.joblib`** — Per-municipio bundle. Structure:
+- **`data/foco_models.joblib`** — Per-municipio bundle. Structure:
   ```
   { cod_mpio (str): {
       "municipio": str,
@@ -44,9 +44,9 @@ Three core artifacts plus shared metadata:
   ```
   28 features per model (D15): clima actual + lags 1-3 + medias móviles 3m + casos/incidencia lags + `mes_sin`/`mes_cos`.
 
-- **`panel_municipal_mensual.csv`** — Mensual 2007-2024 × 3 municipios (648 rows × 42 cols). Key cols: `cod_mpio`, `municipio`, `ano`, `mes`, `casos_total`, `incidencia_x100k`, `temperatura_c`, `precipitacion_mm`, `ndvi`, `dewpoint_c`, todos los lags/medias móviles, `umbral_exceso`, `exceso`. **No** contiene `mes_sin`/`mes_cos` — `app.py` los computa al cargar.
+- **`data/panel_municipal_mensual.csv`** — Mensual 2007-2024 × 3 municipios (648 rows × 42 cols). Key cols: `cod_mpio`, `municipio`, `ano`, `mes`, `casos_total`, `incidencia_x100k`, `temperatura_c`, `precipitacion_mm`, `ndvi`, `dewpoint_c`, todos los lags/medias móviles, `umbral_exceso`, `exceso`. **No** contiene `mes_sin`/`mes_cos` — `app.py` los computa al cargar.
 
-- **`predicciones_test.csv`** — Predicciones cacheadas 2020-2024 × 3 municipios × 3 modelos (baseline/logistic/xgboost). Columnas: `cod_mpio`, `ano`, `mes`, `casos_total`, `exceso`, `pred_baseline`, `pred_logistic`, `proba_logistic`, `pred_xgboost`, `proba_xgboost`. Única fuente de métricas en el dashboard.
+- **`data/predicciones_test.csv`** — Predicciones cacheadas 2020-2024 × 3 municipios × 3 modelos (baseline/logistic/xgboost). Columnas: `cod_mpio`, `ano`, `mes`, `casos_total`, `exceso`, `pred_baseline`, `pred_logistic`, `proba_logistic`, `pred_xgboost`, `proba_xgboost`. Única fuente de métricas en el dashboard.
 
 - **`foco_meta.py`** — Constantes compartidas: `FOCO_META` (nombre, depto, región, lat/lon), `THRESHOLDS = {"riesgo": 0.3, "alerta": 0.6}`, `MODEL_TYPES = ["logistic", "xgboost"]`. Reusar siempre estas constantes en lugar de duplicarlas.
 

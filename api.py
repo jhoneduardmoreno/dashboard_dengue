@@ -24,7 +24,7 @@ _data: dict = {}
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    bundle = joblib.load("foco_models.joblib")
+    bundle = joblib.load("data/foco_models.joblib")
     bundle_keys = set(bundle.keys())
     meta_keys = set(FOCO_META.keys())
     if bundle_keys != meta_keys:

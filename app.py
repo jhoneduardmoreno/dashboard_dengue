@@ -82,13 +82,13 @@ st.markdown(
 # ============================================================
 @st.cache_resource
 def load_bundle():
-    bundle = joblib.load("foco_models.joblib")
+    bundle = joblib.load("data/foco_models.joblib")
     return bundle
 
 
 @st.cache_data
 def load_panel():
-    df = pd.read_csv("panel_municipal_mensual.csv")
+    df = pd.read_csv("data/panel_municipal_mensual.csv")
     df["cod_mpio"] = df["cod_mpio"].astype(str)
     df["fecha"] = pd.to_datetime(
         df["ano"].astype(str) + "-" + df["mes"].astype(str).str.zfill(2) + "-01"
@@ -101,7 +101,7 @@ def load_panel():
 
 @st.cache_data
 def load_test_predictions():
-    tp = pd.read_csv("predicciones_test.csv")
+    tp = pd.read_csv("data/predicciones_test.csv")
     tp["cod_mpio"] = tp["cod_mpio"].astype(str)
     tp["fecha"] = pd.to_datetime(
         tp["ano"].astype(str) + "-" + tp["mes"].astype(str).str.zfill(2) + "-01"

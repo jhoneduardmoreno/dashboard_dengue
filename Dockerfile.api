@@ -7,7 +7,7 @@ RUN pip install --no-cache-dir -r requirements_api.txt
 
 COPY api.py .
 COPY foco_meta.py .
-COPY foco_models.joblib .
+COPY data/foco_models.joblib ./data/foco_models.joblib
 
 EXPOSE 8000
 

@@ -18,9 +18,9 @@ Toda la metodología (D1–D17), incluyendo definición de exceso, features, tun
 
 ## Artefactos
 
-- `foco_models.joblib` — Bundle `{cod_mpio: {municipio, logistic:{model,scaler,features}, xgboost:{model,scaler,features,best_params}}}`.
-- `panel_municipal_mensual.csv` — Panel mensual 2007-2024 × 3 municipios (648 filas).
-- `predicciones_test.csv` — Predicciones cacheadas baseline/logística/XGBoost para 2020-2024.
+- `data/foco_models.joblib` — Bundle `{cod_mpio: {municipio, logistic:{model,scaler,features}, xgboost:{model,scaler,features,best_params}}}`.
+- `data/panel_municipal_mensual.csv` — Panel mensual 2007-2024 × 3 municipios (648 filas).
+- `data/predicciones_test.csv` — Predicciones cacheadas baseline/logística/XGBoost para 2020-2024.
 - `foco_meta.py` — Metadata compartida (coords, deptos, thresholds 0.3/0.6).
 
 ## Instalación
