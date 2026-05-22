@@ -463,6 +463,12 @@ with col_risk:
     if df_periodo.empty:
         st.info("No hay datos para el período seleccionado.")
     else:
+        if ano_sel < 2020:
+            st.warning(
+                "⚠️ **Período de entrenamiento (2007–2019):** "
+                "la probabilidad mostrada es in-sample — el modelo fue entrenado con estos datos "
+                "y no refleja capacidad predictiva real."
+            )
         row = df_periodo.iloc[0]
         prob = row["probabilidad_exceso"]
         nivel = row["nivel_alerta"]
