@@ -6,7 +6,8 @@ COPY requirements_api.txt .
 RUN pip install --no-cache-dir -r requirements_api.txt
 
 COPY api.py .
-COPY logistic_regression.joblib .
+COPY foco_meta.py .
+COPY foco_models.joblib .
 
 EXPOSE 8000
 
