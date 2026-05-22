@@ -80,4 +80,4 @@ Se despliega bajo un ambiente EC2 en AWS el cual se expone con una IP pública.
 ## Proyecto
 
 MAIA — Universidad de los Andes  
-Proyecto Desarrollo de Soluciones — Microproyecto Entrega 3 — 2026
+Proyecto Despliegue de Soluciones — 2026
