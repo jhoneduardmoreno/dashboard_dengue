@@ -4,7 +4,7 @@
 ## 1. Introducción
 
 El Sistema de Alerta Temprana de Dengue es una aplicación web interactiva que permite estimar y visualizar la probabilidad de exceso epidémico de dengue a nivel departamental o municipal en Colombia.
-El sistema utiliza un modelo de Regresión Logística previamente entrenado, el cual calcula la variable probabilidad_exceso y clasifica el riesgo en tres niveles:
+El sistema utiliza un modelo de inteligencia artificial basado en árboles de decisión potenciados (XGBoost) que analiza los datos epidemiológicos y climáticos recientes para calcular la probabilidad de que ocurra un aumento inusual (exceso) de casos de dengue. Con base en este análisis, el sistema clasifica automáticamente la situación del municipio seleccionado en uno de los siguientes tres niveles:
 - 🟢 Normal
 - 🟡 Riesgo 
 - 🔴 Alerta
