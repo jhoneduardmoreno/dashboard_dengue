@@ -1,0 +1,13 @@
+.git
+__pycache__
+*.pyc
+.pytest_cache
+.streamlit
+backup_pre_foco
+backup_*
+docs
+.github
+memory
+.venv
+venv
+.env
