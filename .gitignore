@@ -2,6 +2,7 @@ __pycache__/
 *.pyc
 .streamlit/
 memory/
+docs/superpowers/
 .venv/
 .env
 nginx/certs/
