@@ -22,7 +22,7 @@ Figura 1. Vista general del Sistema de Alerta Temprana
 
 La vista principal contiene:
 - Barra lateral de filtros
-- Mapa interactivo por departamento
+- Mapa interactivo por municipio
 - Gráfica de casos históricos y predicción
 - Panel de riesgo detallado
 - Opción de descarga de reporte
@@ -32,7 +32,7 @@ La vista principal contiene:
 **Paso 1. Seleccionar ubicación**
 
 En la barra lateral izquierda, el usuario puede seleccionar: 
-- Departamento. 
+- Municipio. 
 
 Si se deja en "Todos", el sistema muestra la vista agregada nacional.
 
@@ -51,13 +51,13 @@ Figura 2. Barra lateral de filtros
 # 4. Flujo completo
 
 1. **Abrir:** http://localhost:8501
-2. **Departamento:** Selecciona (ej: Antioquia)
+2. **Municipio:** Selecciona (ej: Fundación)
 3. **Año/Mes:** 2024 → Marzo  
 4. **Ver:** Mapa cambia colores automáticamente
 5. **Mapa:** Tooltip departamento
 6. **Descargar:** CSV con datos filtrados si se desea
 
-# 5. Mapa de Alerta Departamental
+# 5. Mapa de Alerta Municipal
 
 El mapa muestra la distribución espacial del riesgo para el período seleccionado. Cada territorio se representa mediante un color:
 
@@ -68,11 +68,11 @@ El mapa muestra la distribución espacial del riesgo para el período selecciona
 El tamaño del marcador puede reflejar magnitud de casos o probabilidad.
 
 ![Fig](imagenes/mapa.jpg)
-Figura 3. Mapa de alerta por departamento
+Figura 3. Mapa de alerta por municipio
 
 Interacción:
 
- - Al pasar el cursor sobre un departamento se muestran detalles.
+ - Al pasar el cursor sobre un municipio se muestran detalles.
  - Permite identificar patrones geográficos de riesgo.
 
 # 6. Serie Temporal de Casos
