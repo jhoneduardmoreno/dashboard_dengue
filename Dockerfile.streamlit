@@ -6,9 +6,14 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app.py .
+COPY foco_meta.py .
 COPY panel_municipal_mensual.csv .
-COPY logistic_regression.joblib .
+COPY predicciones_test.csv .
+COPY foco_models.joblib .
 
 EXPOSE 8501
 
-CMD ["streamlit", "run", "app.py", "--server.port", "8501", "--server.address", "0.0.0.0"]
+CMD ["streamlit", "run", "app.py", \
+     "--server.port", "8501", \
+     "--server.address", "0.0.0.0", \
+     "--server.headless", "true"]
